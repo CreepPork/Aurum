@@ -23,16 +23,16 @@ class CreateBusStopsTable extends Migration
             $table->integer('road_side_id');
             $table->foreign('road_side_id')->references('id')->on('road_sides');
 
-            $table->string('road');
-            $table->string('street');
+            $table->string('road')->nullable();
+            $table->string('street')->nullable();
 
-            $table->integer('region_id');
+            $table->integer('region_id')->nullable();
             $table->foreign('region_id')->references('id')->on('regions');
 
-            $table->integer('parish_id');
+            $table->integer('parish_id')->nullable();
             $table->foreign('parish_id')->references('id')->on('parishes');
 
-            $table->integer('village_id');
+            $table->integer('village_id')->nullable();
             $table->foreign('village_id')->references('id')->on('villages');
 
             $table->timestamps();

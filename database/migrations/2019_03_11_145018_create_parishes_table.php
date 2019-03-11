@@ -15,6 +15,7 @@ class CreateParishesTable extends Migration
     {
         Schema::create('parishes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
             $table->timestamps();
         });
     }

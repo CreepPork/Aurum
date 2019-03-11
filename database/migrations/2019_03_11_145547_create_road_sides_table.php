@@ -15,6 +15,7 @@ class CreateRoadSidesTable extends Migration
     {
         Schema::create('road_sides', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
             $table->timestamps();
         });
     }
