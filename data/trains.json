@@ -1,0 +1,866 @@
+[
+  {
+    "title": "Rīga",
+    "position_X": 56.946324,
+    "position_Y": 24.121025,
+    "line": "Skulte"
+  },
+  {
+    "title": "Zemitāni",
+    "position_X": 56.965189,
+    "position_Y": 24.15637,
+    "line": "Skulte"
+  },
+  {
+    "title": "Brasa",
+    "position_X": 56.977874,
+    "position_Y": 24.145964,
+    "line": "Skulte"
+  },
+  {
+    "title": "Sarkandaugava",
+    "position_X": 56.992964,
+    "position_Y": 24.134186,
+    "line": "Skulte"
+  },
+  {
+    "title": "Mangaļi",
+    "position_X": 57.01863,
+    "position_Y": 24.129569,
+    "line": "Skulte"
+  },
+  {
+    "title": "Ziemeļblāzma",
+    "position_X": 57.035832,
+    "position_Y": 24.114957,
+    "line": "Skulte"
+  },
+  {
+    "title": "Vecdaugava",
+    "position_X": 57.057131,
+    "position_Y": 24.107102,
+    "line": "Skulte"
+  },
+  {
+    "title": "Vecāķi",
+    "position_X": 57.074593,
+    "position_Y": 24.115064,
+    "line": "Skulte"
+  },
+  {
+    "title": "Kalngale",
+    "position_X": 57.08596,
+    "position_Y": 24.151372,
+    "line": "Skulte"
+  },
+  {
+    "title": "Garciems",
+    "position_X": 57.10188,
+    "position_Y": 24.205613,
+    "line": "Skulte"
+  },
+  {
+    "title": "Garupe",
+    "position_X": 57.114496,
+    "position_Y": 24.245961,
+    "line": "Skulte"
+  },
+  {
+    "title": "Carnikava",
+    "position_X": 57.127545,
+    "position_Y": 24.27833,
+    "line": "Skulte"
+  },
+  {
+    "title": "Gauja",
+    "position_X": 57.141498,
+    "position_Y": 24.287916,
+    "line": "Skulte"
+  },
+  {
+    "title": "Lilaste",
+    "position_X": 57.181706,
+    "position_Y": 24.335748,
+    "line": "Skulte"
+  },
+  {
+    "title": "Inčupe",
+    "position_X": 57.224791,
+    "position_Y": 24.397802,
+    "line": "Skulte"
+  },
+  {
+    "title": "Pabaži",
+    "position_X": 57.242076,
+    "position_Y": 24.408262,
+    "line": "Skulte"
+  },
+  {
+    "title": "Saulkrasti",
+    "position_X": 57.26882,
+    "position_Y": 24.426662,
+    "line": "Skulte"
+  },
+  {
+    "title": "Ķīšupe",
+    "position_X": 57.286439,
+    "position_Y": 24.432976,
+    "line": "Skulte"
+  },
+  {
+    "title": "Zvejniekciems",
+    "position_X": 57.307151,
+    "position_Y": 24.442721,
+    "line": "Skulte"
+  },
+  {
+    "title": "Skulte",
+    "position_X": 57.332875,
+    "position_Y": 24.462002,
+    "line": "Skulte"
+  },
+  {
+    "title": "Čiekurkalns",
+    "position_X": 56.980302,
+    "position_Y": 24.168769,
+    "line": "Valga"
+  },
+  {
+    "title": "Jugla",
+    "position_X": 56.992347,
+    "position_Y": 24.235644,
+    "line": "Valga"
+  },
+  {
+    "title": "Baltezers",
+    "position_X": 57.019388,
+    "position_Y": 24.327066,
+    "line": "Valga"
+  },
+  {
+    "title": "Garkalne",
+    "position_X": 57.0466,
+    "position_Y": 24.413577,
+    "line": "Valga"
+  },
+  {
+    "title": "Krievupe",
+    "position_X": 57.064889,
+    "position_Y": 24.510331,
+    "line": "Valga"
+  },
+  {
+    "title": "Vangaži",
+    "position_X": 57.078643,
+    "position_Y": 24.587787,
+    "line": "Valga"
+  },
+  {
+    "title": "Inčukalns",
+    "position_X": 57.096361,
+    "position_Y": 24.687242,
+    "line": "Valga"
+  },
+  {
+    "title": "Egļupe",
+    "position_X": 57.10741,
+    "position_Y": 24.741063,
+    "line": "Valga"
+  },
+  {
+    "title": "Silciems",
+    "position_X": 57.125079,
+    "position_Y": 24.787113,
+    "line": "Valga"
+  },
+  {
+    "title": "Sigulda",
+    "position_X": 57.153164,
+    "position_Y": 24.855541,
+    "line": "Valga"
+  },
+  {
+    "title": "Līgatne",
+    "position_X": 57.184338,
+    "position_Y": 25.024199,
+    "line": "Valga"
+  },
+  {
+    "title": "Ieriķi",
+    "position_X": 57.199415,
+    "position_Y": 25.173065,
+    "line": "Valga"
+  },
+  {
+    "title": "Melturi",
+    "position_X": 57.20774,
+    "position_Y": 25.234661,
+    "line": "Valga"
+  },
+  {
+    "title": "Āraiši",
+    "position_X": 57.238332,
+    "position_Y": 25.301942,
+    "line": "Valga"
+  },
+  {
+    "title": "Cēsis",
+    "position_X": 57.313804,
+    "position_Y": 25.283269,
+    "line": "Valga"
+  },
+  {
+    "title": "Jāņamuiža",
+    "position_X": 57.34416,
+    "position_Y": 25.340274,
+    "line": "Valga"
+  },
+  {
+    "title": "Lode",
+    "position_X": 57.388216,
+    "position_Y": 25.414253,
+    "line": "Valga"
+  },
+  {
+    "title": "Bāle",
+    "position_X": 57.458094,
+    "position_Y": 25.441333,
+    "line": "Valga"
+  },
+  {
+    "title": "Valmiera",
+    "position_X": 57.522732,
+    "position_Y": 25.441294,
+    "line": "Valga"
+  },
+  {
+    "title": "Brenguļi",
+    "position_X": 57.558815,
+    "position_Y": 25.55833,
+    "line": "Valga"
+  },
+  {
+    "title": "Strenči",
+    "position_X": 57.634482,
+    "position_Y": 25.699286,
+    "line": "Valga"
+  },
+  {
+    "title": "Seda",
+    "position_X": 57.644368,
+    "position_Y": 25.750321,
+    "line": "Valga"
+  },
+  {
+    "title": "Saule",
+    "position_X": 57.694318,
+    "position_Y": 25.894191,
+    "line": "Valga"
+  },
+  {
+    "title": "Lugaži",
+    "position_X": 57.754049,
+    "position_Y": 26.002961,
+    "line": "Valga"
+  },
+  {
+    "title": "Valga",
+    "position_X": 57.774532,
+    "position_Y": 26.052916,
+    "line": "Valga"
+  },
+  {
+    "title": "Vagonu parks",
+    "position_X": 56.943697,
+    "position_Y": 24.155779,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Jāņavārti",
+    "position_X": 56.919054,
+    "position_Y": 24.185921,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Daugmale",
+    "position_X": 56.910304,
+    "position_Y": 24.200021,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Šķirotava",
+    "position_X": 56.904687,
+    "position_Y": 24.211131,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Gaisma",
+    "position_X": 56.894046,
+    "position_Y": 24.232111,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Rumbula",
+    "position_X": 56.88378,
+    "position_Y": 24.252374,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Dārziņi",
+    "position_X": 56.87028,
+    "position_Y": 24.28067,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Dole",
+    "position_X": 56.864343,
+    "position_Y": 24.323765,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Salaspils",
+    "position_X": 56.860502,
+    "position_Y": 24.353198,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Saulkalne",
+    "position_X": 56.849539,
+    "position_Y": 24.436102,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Ikšķile",
+    "position_X": 56.839501,
+    "position_Y": 24.506309,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Jaunogre",
+    "position_X": 56.821731,
+    "position_Y": 24.582309,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Ogre",
+    "position_X": 56.815647,
+    "position_Y": 24.602487,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Pārogre",
+    "position_X": 56.808772,
+    "position_Y": 24.616113,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Ciemupe",
+    "position_X": 56.781781,
+    "position_Y": 24.654153,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Ķegums",
+    "position_X": 56.741158,
+    "position_Y": 24.72634,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Lielvārde",
+    "position_X": 56.722312,
+    "position_Y": 24.807861,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Kaibala",
+    "position_X": 56.70324,
+    "position_Y": 24.888518,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Jumprava",
+    "position_X": 56.679791,
+    "position_Y": 24.969608,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Dendrārijs",
+    "position_X": 56.658911,
+    "position_Y": 25.041786,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Skrīveri",
+    "position_X": 56.646979,
+    "position_Y": 25.124263,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Muldakmens",
+    "position_X": 56.630928,
+    "position_Y": 25.208003,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Aizkraukle",
+    "position_X": 56.622662,
+    "position_Y": 25.275224,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Koknese",
+    "position_X": 56.650948,
+    "position_Y": 25.440084,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Alotene",
+    "position_X": 56.633211,
+    "position_Y": 25.584965,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Pļaviņas",
+    "position_X": 56.617077,
+    "position_Y": 25.716983,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Ozolsala",
+    "position_X": 56.583211,
+    "position_Y": 25.790743,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Krustpils",
+    "position_X": 56.52071,
+    "position_Y": 25.859818,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Trepe",
+    "position_X": 56.438415,
+    "position_Y": 26.076064,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Līvāni",
+    "position_X": 56.350848,
+    "position_Y": 26.180759,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Jersika",
+    "position_X": 56.254219,
+    "position_Y": 26.210812,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Nīcgale",
+    "position_X": 56.135427,
+    "position_Y": 26.371742,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Vabole",
+    "position_X": 56.04063,
+    "position_Y": 26.45772,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Līksna",
+    "position_X": 55.998126,
+    "position_Y": 26.452721,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Daugavpils",
+    "position_X": 55.874794,
+    "position_Y": 26.52802,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Aglona",
+    "position_X": 56.178316,
+    "position_Y": 26.890792,
+    "line": "Daugavpils"
+  },
+  {
+    "title": "Kūkas",
+    "position_X": 56.539891,
+    "position_Y": 26.058408,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Mežāre",
+    "position_X": 56.541946,
+    "position_Y": 26.25222,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Atašiene",
+    "position_X": 56.530099,
+    "position_Y": 26.408362,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Stirniene",
+    "position_X": 56.565817,
+    "position_Y": 26.637407,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Varakļāni",
+    "position_X": 56.560667,
+    "position_Y": 26.76956,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Viļāni",
+    "position_X": 56.561077,
+    "position_Y": 26.938862,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Sakstagals",
+    "position_X": 56.536741,
+    "position_Y": 27.152237,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Rēzekne 2",
+    "position_X": 56.52007,
+    "position_Y": 27.345479,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Taudejāņi",
+    "position_X": 56.532339,
+    "position_Y": 27.454669,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Cirma",
+    "position_X": 56.53399,
+    "position_Y": 27.533552,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Ludza",
+    "position_X": 56.533197,
+    "position_Y": 27.721713,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Istalsna",
+    "position_X": 56.482154,
+    "position_Y": 27.830224,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Nerza",
+    "position_X": 56.430701,
+    "position_Y": 27.960043,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Briģi",
+    "position_X": 56.414551,
+    "position_Y": 28.053783,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Zilupe",
+    "position_X": 56.391516,
+    "position_Y": 28.118811,
+    "line": "Zilupe"
+  },
+  {
+    "title": "Jaunkalsnava",
+    "position_X": 56.687004,
+    "position_Y": 25.976552,
+    "line": "Gulbene"
+  },
+  {
+    "title": "Kalsnava",
+    "position_X": 56.734392,
+    "position_Y": 26.018921,
+    "line": "Gulbene"
+  },
+  {
+    "title": "Mārciena",
+    "position_X": 56.77219,
+    "position_Y": 26.097129,
+    "line": "Gulbene"
+  },
+  {
+    "title": "Madona",
+    "position_X": 56.851035,
+    "position_Y": 26.22045,
+    "line": "Gulbene"
+  },
+  {
+    "title": "Cesvaine",
+    "position_X": 56.958268,
+    "position_Y": 26.331789,
+    "line": "Gulbene"
+  },
+  {
+    "title": "Gulbene",
+    "position_X": 57.183173,
+    "position_Y": 26.766376,
+    "line": "Gulbene"
+  },
+  {
+    "title": "Torņakalns",
+    "position_X": 56.932572,
+    "position_Y": 24.089094,
+    "line": "Tukums"
+  },
+  {
+    "title": "Zasulauks",
+    "position_X": 56.941086,
+    "position_Y": 24.052158,
+    "line": "Tukums"
+  },
+  {
+    "title": "Depo",
+    "position_X": 56.946542,
+    "position_Y": 24.039185,
+    "line": "Tukums"
+  },
+  {
+    "title": "Zolitūde",
+    "position_X": 56.949248,
+    "position_Y": 24.022394,
+    "line": "Tukums"
+  },
+  {
+    "title": "Imanta",
+    "position_X": 56.950345,
+    "position_Y": 24.000068,
+    "line": "Tukums"
+  },
+  {
+    "title": "Babīte",
+    "position_X": 56.95724,
+    "position_Y": 23.953117,
+    "line": "Tukums"
+  },
+  {
+    "title": "Priedaine",
+    "position_X": 56.971839,
+    "position_Y": 23.886995,
+    "line": "Tukums"
+  },
+  {
+    "title": "Lielupe",
+    "position_X": 56.982143,
+    "position_Y": 23.87009,
+    "line": "Tukums"
+  },
+  {
+    "title": "Bulduri",
+    "position_X": 56.981206,
+    "position_Y": 23.851955,
+    "line": "Tukums"
+  },
+  {
+    "title": "Dzintari",
+    "position_X": 56.973611,
+    "position_Y": 23.821859,
+    "line": "Tukums"
+  },
+  {
+    "title": "Majori",
+    "position_X": 56.971335,
+    "position_Y": 23.796936,
+    "line": "Tukums"
+  },
+  {
+    "title": "Dubulti",
+    "position_X": 56.969551,
+    "position_Y": 23.776608,
+    "line": "Tukums"
+  },
+  {
+    "title": "Jaundubulti",
+    "position_X": 56.96098,
+    "position_Y": 23.75742,
+    "line": "Tukums"
+  },
+  {
+    "title": "Pumpuri",
+    "position_X": 56.959987,
+    "position_Y": 23.737098,
+    "line": "Tukums"
+  },
+  {
+    "title": "Melluži",
+    "position_X": 56.958883,
+    "position_Y": 23.713549,
+    "line": "Tukums"
+  },
+  {
+    "title": "Asari",
+    "position_X": 56.957232,
+    "position_Y": 23.690141,
+    "line": "Tukums"
+  },
+  {
+    "title": "Vaivari",
+    "position_X": 56.955036,
+    "position_Y": 23.669115,
+    "line": "Tukums"
+  },
+  {
+    "title": "Sloka",
+    "position_X": 56.947465,
+    "position_Y": 23.618759,
+    "line": "Tukums"
+  },
+  {
+    "title": "Kūdra",
+    "position_X": 56.928603,
+    "position_Y": 23.54563,
+    "line": "Tukums"
+  },
+  {
+    "title": "Ķemeri",
+    "position_X": 56.937952,
+    "position_Y": 23.491208,
+    "line": "Tukums"
+  },
+  {
+    "title": "Smārde",
+    "position_X": 56.955046,
+    "position_Y": 23.336319,
+    "line": "Tukums"
+  },
+  {
+    "title": "Milzkalne",
+    "position_X": 56.970362,
+    "position_Y": 23.233654,
+    "line": "Tukums"
+  },
+  {
+    "title": "Tukums 1",
+    "position_X": 56.965909,
+    "position_Y": 23.169937,
+    "line": "Tukums"
+  },
+  {
+    "title": "Tukums 2",
+    "position_X": 56.959739,
+    "position_Y": 23.115581,
+    "line": "Tukums"
+  },
+  {
+    "title": "Atgāzene",
+    "position_X": 56.917104,
+    "position_Y": 24.079756,
+    "line": "Liepāja"
+  },
+  {
+    "title": "BA Turība",
+    "position_X": 56.910607,
+    "position_Y": 24.077152,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Tīraine",
+    "position_X": 56.886794,
+    "position_Y": 24.073829,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Baloži",
+    "position_X": 56.844514,
+    "position_Y": 24.047724,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Jaunolaine",
+    "position_X": 56.806301,
+    "position_Y": 23.984229,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Olaine",
+    "position_X": 56.78634,
+    "position_Y": 23.946089,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Dalbe",
+    "position_X": 56.741734,
+    "position_Y": 23.875493,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Cena",
+    "position_X": 56.70864,
+    "position_Y": 23.833053,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Ozolnieki",
+    "position_X": 56.685995,
+    "position_Y": 23.805661,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Cukurfabrika",
+    "position_X": 56.653046,
+    "position_Y": 23.758568,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Jelgava",
+    "position_X": 56.641546,
+    "position_Y": 23.734509,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Viesturi",
+    "position_X": 56.615301,
+    "position_Y": 23.585127,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Dobele",
+    "position_X": 56.628935,
+    "position_Y": 23.284493,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Biksti",
+    "position_X": 56.691485,
+    "position_Y": 22.980932,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Brocēni",
+    "position_X": 56.693234,
+    "position_Y": 22.570238,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Saldus",
+    "position_X": 56.685878,
+    "position_Y": 22.471094,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Skrunda",
+    "position_X": 56.680662,
+    "position_Y": 22.011568,
+    "line": "Liepāja"
+  },
+  {
+    "title": "Liepāja Pasažieru",
+    "position_X": 56.524768,
+    "position_Y": 21.017766,
+    "line": "Liepāja"
+  }
+]
