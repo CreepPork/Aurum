@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('styling-main', '')
+
 @section('content')
-<h1>test</h1>
+    <map-component></map-component>
 @endsection
