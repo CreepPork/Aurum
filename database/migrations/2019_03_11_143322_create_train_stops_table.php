@@ -15,6 +15,14 @@ class CreateTrainStopsTable extends Migration
     {
         Schema::create('train_stops', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
+
+            $table->float('position_X');
+            $table->float('position_Y');
+
+            $table->integer('line_id');
+            $table->foreign('line_id')->refernces('id')->on('lines');
+
             $table->timestamps();
         });
     }
