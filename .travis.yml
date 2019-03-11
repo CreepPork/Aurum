@@ -15,3 +15,6 @@ script:
 - vendor/bin/phpunit --coverage-clover=coverage.xml
 notifications:
   email: false
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
