@@ -1839,7 +1839,20 @@ __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js")
       "Outdoors": outdoors
     };
     var overlayMaps = {};
-    L.control.layers(baseMaps, overlayMaps).addTo(map);
+    axios.get('/api/train').then(function (response) {
+      var markers = [];
+      var data = response.data;
+      data.forEach(function (marker) {
+        var newMarker = L.marker([marker.position_X, marker.position_Y], {}).bindPopup(marker.title);
+        markers.push(newMarker);
+      });
+      markers = L.layerGroup(markers);
+      overlayMaps['Trains'] = markers;
+      map.addLayer(markers);
+      L.control.layers(baseMaps, overlayMaps).addTo(map);
+    }).catch(function (error) {
+      return console.error(error);
+    });
   }
 });
 

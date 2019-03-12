@@ -45,9 +45,27 @@
                 "Outdoors": outdoors
             };
 
-            const overlayMaps = { };
+            let overlayMaps = {};
 
-            L.control.layers(baseMaps, overlayMaps).addTo(map);
+            axios.get('/api/train').then(response => {
+                let markers = [];
+
+                const data = response.data;
+
+                data.forEach(marker => {
+                    let newMarker = L.marker([marker.position_X, marker.position_Y], {}).bindPopup(marker.title);
+
+                    markers.push(newMarker);
+                });
+
+                markers = L.layerGroup(markers);
+
+                overlayMaps['Trains'] = markers;
+
+                map.addLayer(markers);
+
+                L.control.layers(baseMaps, overlayMaps).addTo(map);
+            }).catch(error => console.error(error));
         }
     }
 </script>
