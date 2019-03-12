@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TrainStop;
 use Illuminate\Http\Request;
+use App\Line;
 
 class TrainStopController extends Controller
 {
@@ -14,7 +15,7 @@ class TrainStopController extends Controller
      */
     public function index()
     {
-        //
+        return TrainStop::all();
     }
 
     /**
@@ -35,7 +36,35 @@ class TrainStopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->isJson())
+        {
+
+            foreach ($request->all() as $trainStop)
+            {
+                $validator = \Validator::make($trainStop, [
+                    'title' => 'required|string|max:255|min:3',
+                    'position_X' => 'required|numeric',
+                    'position_Y' => 'required|numeric',
+                    'line' => 'required|string|min:3|max:255'
+                ]);
+
+                if ($validator->fails())
+                {
+                    return response()->json($validator->errors());
+                }
+
+                $line = Line::firstOrCreate(['title' => $trainStop['line']]);
+
+                $newTrainStop = [
+                    'title' => $trainStop['title'],
+                    'position_X' => $trainStop['position_X'],
+                    'position_Y' => $trainStop['position_Y'],
+                    'line_id' => $line->id
+                ];
+
+                TrainStop::create($newTrainStop);
+            }
+        }
     }
 
     /**
