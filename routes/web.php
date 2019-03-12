@@ -20,7 +20,3 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::resource('/map', MapController::class);
-
-Route::resource('/trains', TrainStopController::class);
-
-Route::resource('/buses', BusStopController::class);
