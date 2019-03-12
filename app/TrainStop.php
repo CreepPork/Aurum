@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TrainStop extends Model
 {
-    protected $fillable = ['title', 'position_X', 'position_Y', 'line'];
+    protected $fillable = ['title', 'position_X', 'position_Y', 'line_id'];
 
     /**
      * A train stop has only one line assigned to it.
@@ -15,6 +15,6 @@ class TrainStop extends Model
      */
     public function line()
     {
-        return $this->hasOne(Line::class);
+        return $this->belongsTo(Line::class);
     }
 }

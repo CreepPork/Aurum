@@ -12,21 +12,21 @@ class BusStop extends Model
 
     public function roadSide()
     {
-        $this->hasOne(RoadSide::class);
+        $this->belongsTo(RoadSide::class);
     }
 
     public function region()
     {
-        $this->hasOne(Region::class);
+        $this->belongsTo(Region::class);
     }
 
     public function parish()
     {
-        $this->hasOne(Parish::class);
+        $this->belongsTo(Parish::class);
     }
 
     public function village()
     {
-        $this->hasOne(Village::class);
+        $this->belongsTo(Village::class);
     }
 }
