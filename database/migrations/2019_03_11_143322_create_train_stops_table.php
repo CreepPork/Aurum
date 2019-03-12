@@ -17,11 +17,11 @@ class CreateTrainStopsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
 
-            $table->float('position_X');
-            $table->float('position_Y');
+            $table->double('position_X');
+            $table->double('position_Y');
 
-            $table->integer('line_id');
-            $table->foreign('line_id')->refernces('id')->on('lines');
+            $table->unsignedBigInteger('line_id')->index();
+            $table->foreign('line_id')->references('id')->on('lines');
 
             $table->timestamps();
         });

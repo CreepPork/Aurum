@@ -17,22 +17,25 @@ class CreateBusStopsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
 
-            $table->integer('stop_code');
-            $table->integer('common_code');
+            $table->integer('stop_code')->index();
+            $table->integer('common_code')->index();
 
-            $table->integer('road_side_id');
+            $table->double('position_X');
+            $table->double('position_Y');
+
+            $table-> unsignedBigInteger('road_side_id')->index();
             $table->foreign('road_side_id')->references('id')->on('road_sides');
 
             $table->string('road')->nullable();
             $table->string('street')->nullable();
 
-            $table->integer('region_id')->nullable();
+            $table->unsignedBigInteger('region_id')->nullable()->index();
             $table->foreign('region_id')->references('id')->on('regions');
 
-            $table->integer('parish_id')->nullable();
+            $table->unsignedBigInteger('parish_id')->nullable()->index();
             $table->foreign('parish_id')->references('id')->on('parishes');
 
-            $table->integer('village_id')->nullable();
+            $table->unsignedBigInteger('village_id')->nullable()->index();
             $table->foreign('village_id')->references('id')->on('villages');
 
             $table->timestamps();
