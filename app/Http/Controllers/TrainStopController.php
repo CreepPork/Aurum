@@ -38,7 +38,6 @@ class TrainStopController extends Controller
     {
         if ($request->isJson())
         {
-
             foreach ($request->all() as $trainStop)
             {
                 $validator = \Validator::make($trainStop, [
@@ -70,12 +69,12 @@ class TrainStopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\TrainStop  $trainStop
+     * @param  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(TrainStop $trainStop)
+    public function show($id)
     {
-        //
+        return TrainStop::find($id);
     }
 
     /**

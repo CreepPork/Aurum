@@ -14,7 +14,24 @@ class LineController extends Controller
      */
     public function index()
     {
-        //
+        $newLines = [];
+
+        $lines = Line::all();
+
+        foreach ($lines as $line)
+        {
+            $newLine = [
+                'id' => $line->id,
+                'title' => $line->title,
+                'stops' => $line->stops,
+                'created_at' => $line->created_at,
+                'updated_at' => $line->updated_at
+            ];
+
+            array_push($newLines, $newLine);
+        }
+
+        return response()->json($newLines);
     }
 
     /**
@@ -46,7 +63,13 @@ class LineController extends Controller
      */
     public function show(Line $line)
     {
-        //
+        return response()->json([
+            'id' => $line->id,
+            'title' => $line->title,
+            'stops' => $line->stops,
+            'created_at' => $line->created_at,
+            'updated_at' => $line->updated_at
+        ]);
     }
 
     /**
