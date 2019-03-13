@@ -19,3 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('/train', TrainStopController::class);
 Route::resource('/bus', BusStopController::class);
+
+Route::resource('/line', LineController::class);
+Route::resource('/parish', ParishController::class);
+Route::resource('/region', RegionController::class);
+Route::resource('/roadSide', RoadSideController::class);
+Route::resource('/village', VillageController::class);
