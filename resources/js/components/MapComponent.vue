@@ -4,7 +4,19 @@
             <div class="container map-sidebar">
                 <h3>Controls</h3>
 
-                <ul id="controls"></ul>
+                <h5>Trains</h5>
+                <ul class="pl-0" style="list-style-type: none">
+                    <li class="py-1" v-for="line in lines">
+                        <button class="btn" :class="line.isActive ? 'btn-primary' : 'btn-outline-primary'" @click="toggleLayer(line)">{{ line.title }}</button>
+                    </li>
+                </ul>
+
+                <h5>Buses</h5>
+                <ul class="pl-0" style="list-style-type: none">
+                    <li class="py-1" v-for="bus in buses">
+                        <button class="btn" :class="bus.isActive ? 'btn-primary' : 'btn-outline-primary'" @click="toggleLayer(bus)">{{ bus.title }}</button>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -37,6 +49,8 @@
                 layers: [outdoors]
             });
 
+            this.map = map;
+
             const baseMaps = {
                 "Streets": streets,
                 "Satellite Streets": satelliteStreets,
@@ -47,25 +61,106 @@
 
             let overlayMaps = {};
 
-            axios.get('/api/train').then(response => {
-                let markers = [];
-
+            // Train lines
+            axios.get('/api/line').then(response => {
                 const data = response.data;
 
-                data.forEach(marker => {
-                    let newMarker = L.marker([marker.position_X, marker.position_Y], {}).bindPopup(marker.title);
+                let markerCount = 1;
 
-                    markers.push(newMarker);
+                data.forEach(line => {
+                    let markers = [];
+
+                    line.stops.forEach(stop => {
+                        let marker = L.marker([stop.position_X, stop.position_Y], {
+                            title: stop.title,
+                            icon: new L.Icon({
+                                iconUrl: `images/icons/${markerCount}.png`,
+                                iconSize: [25, 41],
+                                iconAnchor: [12.5, 41]
+                            })
+                        }).bindPopup(stop.title);
+
+                        markers.push(marker);
+                    });
+
+                    markerCount++;
+
+                    let layerGroup = L.layerGroup(markers);
+
+                    overlayMaps[line.title] = layerGroup;
+
+                    map.addLayer(layerGroup);
+
+                    let modifiedLayerGroup = layerGroup;
+                    modifiedLayerGroup['title'] = line.title;
+                    modifiedLayerGroup['isActive'] = true;
+
+                    this.lines.push(modifiedLayerGroup);
                 });
-
-                markers = L.layerGroup(markers);
-
-                overlayMaps['Trains'] = markers;
-
-                map.addLayer(markers);
 
                 L.control.layers(baseMaps, overlayMaps).addTo(map);
             }).catch(error => console.error(error));
+
+            // Bus lines
+            axios.get('/api/bus').then(response => {
+                const data = response.data;
+
+                let markerCount = 8;
+
+                let markers = [];
+
+                data.forEach(bus => {
+                    let marker = L.marker([bus.position_X, bus.position_Y], {
+                        title: bus.title,
+                        icon: new L.icon({
+                            iconUrl: `images/icons/${markerCount}.png`,
+                            iconSize: [25, 41],
+                            iconAnchor: [12.5, 41]
+                        })
+                    }).bindPopup(bus.title);
+
+                    markers.push(marker);
+                });
+
+                markerCount++;
+
+                let layerGroup = L.layerGroup(markers);
+
+                overlayMaps[bus.title] = layerGroup;
+
+                map.addLayer(layerGroup);
+
+                let modifiedLayerGroup = layerGroup;
+                modifiedLayerGroup['title'] = bus.title;
+                modifiedLayerGroup['isActive'] = true;
+
+                this.buses.push(modifiedLayerGroup);
+
+                L.control.layers(baseMaps, overlayMaps).addTo(map);
+            });
+        },
+
+        data() {
+            return {
+                lines: [],
+                buses: [],
+                map: {}
+            }
+        },
+
+        methods: {
+            toggleLayer(layerGroup) {
+                layerGroup.isActive = !layerGroup.isActive;
+
+                if (this.map.hasLayer(layerGroup))
+                {
+                    this.map.removeLayer(layerGroup);
+                }
+                else
+                {
+                    this.map.addLayer(layerGroup);
+                }
+            }
         }
     }
 </script>

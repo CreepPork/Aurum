@@ -1812,10 +1812,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
+    var _this = this;
+
     var layerSettings = {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
@@ -1831,6 +1845,7 @@ __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js")
       zoom: 14,
       layers: [outdoors]
     });
+    this.map = map;
     var baseMaps = {
       "Streets": streets,
       "Satellite Streets": satelliteStreets,
@@ -1838,21 +1853,84 @@ __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js")
       "Dark": dark,
       "Outdoors": outdoors
     };
-    var overlayMaps = {};
-    axios.get('/api/train').then(function (response) {
-      var markers = [];
+    var overlayMaps = {}; // Train lines
+
+    axios.get('/api/line').then(function (response) {
       var data = response.data;
-      data.forEach(function (marker) {
-        var newMarker = L.marker([marker.position_X, marker.position_Y], {}).bindPopup(marker.title);
-        markers.push(newMarker);
+      var markerCount = 1;
+      data.forEach(function (line) {
+        var markers = [];
+        line.stops.forEach(function (stop) {
+          var marker = L.marker([stop.position_X, stop.position_Y], {
+            title: stop.title,
+            icon: new L.Icon({
+              iconUrl: "images/icons/".concat(markerCount, ".png"),
+              iconSize: [25, 41],
+              iconAnchor: [12.5, 41]
+            })
+          }).bindPopup(stop.title);
+          markers.push(marker);
+        });
+        markerCount++;
+        var layerGroup = L.layerGroup(markers);
+        overlayMaps[line.title] = layerGroup;
+        map.addLayer(layerGroup);
+        var modifiedLayerGroup = layerGroup;
+        modifiedLayerGroup['title'] = line.title;
+        modifiedLayerGroup['isActive'] = true;
+
+        _this.lines.push(modifiedLayerGroup);
       });
-      markers = L.layerGroup(markers);
-      overlayMaps['Trains'] = markers;
-      map.addLayer(markers);
       L.control.layers(baseMaps, overlayMaps).addTo(map);
     }).catch(function (error) {
       return console.error(error);
+    }); // Bus lines
+
+    axios.get('/api/bus').then(function (response) {
+      var data = response.data;
+      var markerCount = 8;
+      var markers = [];
+      data.forEach(function (bus) {
+        var marker = L.marker([bus.position_X, bus.position_Y], {
+          title: bus.title,
+          icon: new L.icon({
+            iconUrl: "images/icons/".concat(markerCount, ".png"),
+            iconSize: [25, 41],
+            iconAnchor: [12.5, 41]
+          })
+        }).bindPopup(bus.title);
+        markers.push(marker);
+      });
+      markerCount++;
+      var layerGroup = L.layerGroup(markers);
+      overlayMaps[bus.title] = layerGroup;
+      map.addLayer(layerGroup);
+      var modifiedLayerGroup = layerGroup;
+      modifiedLayerGroup['title'] = bus.title;
+      modifiedLayerGroup['isActive'] = true;
+
+      _this.buses.push(modifiedLayerGroup);
+
+      L.control.layers(baseMaps, overlayMaps).addTo(map);
     });
+  },
+  data: function data() {
+    return {
+      lines: [],
+      buses: [],
+      map: {}
+    };
+  },
+  methods: {
+    toggleLayer: function toggleLayer(layerGroup) {
+      layerGroup.isActive = !layerGroup.isActive;
+
+      if (this.map.hasLayer(layerGroup)) {
+        this.map.removeLayer(layerGroup);
+      } else {
+        this.map.addLayer(layerGroup);
+      }
+    }
   }
 });
 
@@ -50887,25 +50965,73 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "col-2" }, [
+      _c("div", { staticClass: "container map-sidebar" }, [
+        _c("h3", [_vm._v("Controls")]),
+        _vm._v(" "),
+        _c("h5", [_vm._v("Trains")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "pl-0", staticStyle: { "list-style-type": "none" } },
+          _vm._l(_vm.lines, function(line) {
+            return _c("li", { staticClass: "py-1" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn",
+                  class: line.isActive ? "btn-primary" : "btn-outline-primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.toggleLayer(line)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(line.title))]
+              )
+            ])
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c("h5", [_vm._v("Buses")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "pl-0", staticStyle: { "list-style-type": "none" } },
+          _vm._l(_vm.buses, function(bus) {
+            return _c("li", { staticClass: "py-1" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn",
+                  class: bus.isActive ? "btn-primary" : "btn-outline-primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.toggleLayer(bus)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(bus.title))]
+              )
+            ])
+          }),
+          0
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-2" }, [
-        _c("div", { staticClass: "container map-sidebar" }, [
-          _c("h3", [_vm._v("Controls")]),
-          _vm._v(" "),
-          _c("ul", { attrs: { id: "controls" } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-10 p-0" }, [
-        _c("div", { attrs: { id: "map" } })
-      ])
+    return _c("div", { staticClass: "col-10 p-0" }, [
+      _c("div", { attrs: { id: "map" } })
     ])
   }
 ]
