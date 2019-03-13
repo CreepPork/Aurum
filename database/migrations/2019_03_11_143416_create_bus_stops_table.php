@@ -18,7 +18,7 @@ class CreateBusStopsTable extends Migration
             $table->string('title');
 
             $table->integer('stop_code')->index();
-            $table->integer('common_code')->index();
+            $table->integer('common_code')->index()->nullable();
 
             $table->double('position_X');
             $table->double('position_Y');
