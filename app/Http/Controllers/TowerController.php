@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Line;
+use App\Tower;
 use Illuminate\Http\Request;
 
-class LineController extends Controller
+class TowerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,24 +14,7 @@ class LineController extends Controller
      */
     public function index()
     {
-        $newLines = [];
-
-        $lines = Line::orderBy('title')->get();
-
-        foreach ($lines as $line)
-        {
-            $newLine = [
-                'id' => $line->id,
-                'title' => $line->title,
-                'stops' => $line->stops,
-                'created_at' => $line->created_at,
-                'updated_at' => $line->updated_at
-            ];
-
-            array_push($newLines, $newLine);
-        }
-
-        return response()->json($newLines);
+        return Tower::orderBy('title')->get();
     }
 
     /**
@@ -52,33 +35,45 @@ class LineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->isJson())
+        {
+            foreach ($request->all() as $tower)
+            {
+                $validator = \Validator::make($tower, [
+                    'title' => 'required|string|max:255|min:3',
+                    'position_X' => 'required|numeric',
+                    'position_Y' => 'required|numeric',
+                    'description' => 'required|string|min:3'
+                ]);
+
+                if ($validator->fails())
+                {
+                    return response()->json($validator->errors());
+                }
+
+                Tower::create($tower);
+            }
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Line  $line
+     * @param  \App\Tower  $tower
      * @return \Illuminate\Http\Response
      */
-    public function show(Line $line)
+    public function show(Tower $tower)
     {
-        return response()->json([
-            'id' => $line->id,
-            'title' => $line->title,
-            'stops' => $line->stops,
-            'created_at' => $line->created_at,
-            'updated_at' => $line->updated_at
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Line  $line
+     * @param  \App\Tower  $tower
      * @return \Illuminate\Http\Response
      */
-    public function edit(Line $line)
+    public function edit(Tower $tower)
     {
         //
     }
@@ -87,10 +82,10 @@ class LineController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Line  $line
+     * @param  \App\Tower  $tower
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Line $line)
+    public function update(Request $request, Tower $tower)
     {
         //
     }
@@ -98,10 +93,10 @@ class LineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Line  $line
+     * @param  \App\Tower  $tower
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Line $line)
+    public function destroy(Tower $tower)
     {
         //
     }

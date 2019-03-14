@@ -2,19 +2,54 @@
     <div class="row">
         <div class="col-2">
             <div class="container map-sidebar">
-                <h3>Controls</h3>
+                <h5>Maršruts</h5>
 
-                <h5>Trains</h5>
+                <div class="input-group mb-3">
+                    <select class="custom-select" id="navigationFrom" v-model="navigationFrom">
+                        <option disabled value="">Izvēlaties...</option>
+                        <optgroup v-for="(points, type) in optionGroups" :label="type">
+                            <option v-for="point in points" :value="[point.position_X, point.position_Y]">{{ point.title }}</option>
+                        </optgroup>
+                    </select>
+
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="navigationFrom">No</label>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <select class="custom-select" id="navigationTo" v-model="navigationTo">
+                        <option disabled value="">Izvēlaties...</option>
+                        <optgroup v-for="(points, type) in optionGroups" :label="type">
+                            <option v-for="point in points" :value="[point.position_X, point.position_Y]">{{ point.title }}</option>
+                        </optgroup>
+                    </select>
+
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="navigationTo">Uz</label>
+                    </div>
+                </div>
+
+                <button @click="createRoute()" class="btn btn-outline-primary mb-3">Aprēķināt maršrutu</button>
+
+                <h5>Vilcieni</h5>
                 <ul class="pl-0" style="list-style-type: none">
                     <li class="py-1" v-for="line in lines">
                         <button class="btn" :class="line.isActive ? 'btn-primary' : 'btn-outline-primary'" @click="toggleLayer(line)">{{ line.title }}</button>
                     </li>
                 </ul>
 
-                <h5>Buses</h5>
+                <!-- <h5>Buses</h5>
                 <ul class="pl-0" style="list-style-type: none">
                     <li class="py-1" v-for="bus in buses">
                         <button class="btn" :class="bus.isActive ? 'btn-primary' : 'btn-outline-primary'" @click="toggleLayer(bus)">{{ bus.title }}</button>
+                    </li>
+                </ul> -->
+
+                <h5>Skatu torņi</h5>
+                <ul class="pl-0" style="list-style-type: none">
+                    <li class="py-1" v-if="Object.entries(towers).length !== 0 && towers.constructor !== Object">
+                        <button class="btn" :class="towers.isActive ? 'btn-primary' : 'btn-outline-primary'" @click="toggleLayer(towers)">{{ towers.title }}</button>
                     </li>
                 </ul>
             </div>
@@ -28,6 +63,7 @@
 
 <script>
     require('leaflet');
+    require('leaflet-routing-machine');
 
     export default {
         mounted() {
@@ -81,6 +117,12 @@
                         }).bindPopup(stop.title);
 
                         markers.push(marker);
+
+                        this.optionGroups['Stacijas'].push({
+                            title: stop.title,
+                            position_X: stop.position_X,
+                            position_Y: stop.position_Y,
+                        });
                     });
 
                     markerCount++;
@@ -98,53 +140,108 @@
                     this.lines.push(modifiedLayerGroup);
                 });
 
-                L.control.layers(baseMaps, overlayMaps).addTo(map);
+                this.readyTrain = true;
+                this.addLayersToMap(baseMaps, overlayMaps);
             }).catch(error => console.error(error));
 
-            // Bus lines
-            axios.get('/api/bus').then(response => {
+            // Lookout towers
+            axios.get('/api/tower').then(response => {
                 const data = response.data;
-
-                let markerCount = 8;
 
                 let markers = [];
 
-                data.forEach(bus => {
-                    let marker = L.marker([bus.position_X, bus.position_Y], {
-                        title: bus.title,
-                        icon: new L.icon({
-                            iconUrl: `images/icons/${markerCount}.png`,
+                data.forEach(tower => {
+                    let marker = L.marker([tower.position_X, tower.position_Y], {
+                        title: tower.title,
+                        icon: new L.Icon({
+                            iconUrl: 'images/icons/8.png',
                             iconSize: [25, 41],
                             iconAnchor: [12.5, 41]
                         })
-                    }).bindPopup(bus.title);
+                    }).bindPopup(`<b>${tower.title}</b><br/>${tower.description}`);
 
                     markers.push(marker);
-                });
 
-                markerCount++;
+                    this.optionGroups['Skatu torņi'].push({
+                        title: tower.title,
+                        position_X: tower.position_X,
+                        position_Y: tower.position_Y,
+                    });
+                });
 
                 let layerGroup = L.layerGroup(markers);
 
-                overlayMaps[bus.title] = layerGroup;
+                overlayMaps['Skatu torņi'] = layerGroup;
 
                 map.addLayer(layerGroup);
 
                 let modifiedLayerGroup = layerGroup;
-                modifiedLayerGroup['title'] = bus.title;
+                modifiedLayerGroup['title'] = 'Skatu torņi';
                 modifiedLayerGroup['isActive'] = true;
 
-                this.buses.push(modifiedLayerGroup);
+                this.towers = modifiedLayerGroup;
 
-                L.control.layers(baseMaps, overlayMaps).addTo(map);
-            });
+                layerGroup.addTo(map);
+
+                this.readyTower = true;
+                this.addLayersToMap(baseMaps, overlayMaps);
+            }).catch(error => console.error(error));
+
+            // Bus stops
+            // axios.get('/api/bus').then(response => {
+            //     const data = response.data;
+
+            //     let markerCount = 8;
+
+            //     let markers = [];
+
+            //     data.forEach(bus => {
+            //         let marker = L.marker([bus.position_X, bus.position_Y], {
+            //             title: bus.title,
+            //             icon: new L.icon({
+            //                 iconUrl: `images/icons/${markerCount}.png`,
+            //                 iconSize: [25, 41],
+            //                 iconAnchor: [12.5, 41]
+            //             })
+            //         }).bindPopup(bus.title);
+
+            //         markers.push(marker);
+            //     });
+
+            //     markerCount++;
+
+            //     let layerGroup = L.layerGroup(markers);
+
+            //     overlayMaps['Buses'] = layerGroup;
+
+            //     map.addLayer(layerGroup);
+
+            //     let modifiedLayerGroup = layerGroup;
+            //     modifiedLayerGroup['title'] = 'Buses';
+            //     modifiedLayerGroup['isActive'] = true;
+
+            //     this.buses.push(modifiedLayerGroup);
+
+            //     L.control.layers(baseMaps, overlayMaps).addTo(map);
+            // }).catch(error => console.error(error));
         },
 
         data() {
             return {
                 lines: [],
                 buses: [],
-                map: {}
+                towers: {},
+                map: {},
+                readyTrain: false,
+                readyTower: false,
+                optionGroups: {
+                    'Stacijas': [],
+                    'Skatu torņi': []
+                },
+                navigationFrom: {},
+                navigationTo: {},
+                routeControl: {},
+                isNavigating: false
             }
         },
 
@@ -159,6 +256,40 @@
                 else
                 {
                     this.map.addLayer(layerGroup);
+                }
+            },
+
+            addLayersToMap(baseMaps, overlayMaps) {
+                if (this.readyTrain && this.readyTower)
+                {
+                    L.control.layers(baseMaps, overlayMaps).addTo(this.map);
+                }
+            },
+
+            createRoute() {
+                if (Object.entries(this.navigationFrom).length !== 0 && this.navigationFrom.constructor !== Object
+                    && Object.entries(this.navigationTo).length !== 0 && this.navigationTo.constructor !== Object)
+                {
+                    if (this.isNavigating)
+                    {
+                        this.routeControl.getPlan().setWaypoints([]);
+                        this.isNavigating = false;
+                    }
+
+                    this.routeControl = L.Routing.control({
+                        waypoints: [
+                            this.navigationFrom,
+                            this.navigationTo
+                        ],
+                        routeWhileDragging: false,
+                        router: new L.Routing.OSRMv1({
+                            profile: 'driving'
+                        })
+                    });
+
+                    this.routeControl.addTo(this.map);
+
+                    this.isNavigating = true;
                 }
             }
         }

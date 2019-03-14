@@ -15,7 +15,7 @@ class TrainStopController extends Controller
      */
     public function index()
     {
-        return TrainStop::all();
+        return TrainStop::orderBy('title')->get();
     }
 
     /**

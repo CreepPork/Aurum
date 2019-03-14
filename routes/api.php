@@ -25,3 +25,4 @@ Route::resource('/parish', ParishController::class);
 Route::resource('/region', RegionController::class);
 Route::resource('/roadSide', RoadSideController::class);
 Route::resource('/village', VillageController::class);
+Route::resource('/tower', TowerController::class);

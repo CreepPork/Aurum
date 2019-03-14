@@ -10,6 +10,6 @@ class Line extends Model
 
     public function stops()
     {
-        return $this->hasMany(TrainStop::class);
+        return $this->hasMany(TrainStop::class)->orderBy('title');
     }
 }
