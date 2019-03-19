@@ -274,6 +274,10 @@
                     {
                         this.routeControl.getPlan().setWaypoints([]);
                         this.isNavigating = false;
+
+                        $('.leaflet-routing-container').each((index, value) => {
+                            value.remove();
+                        });
                     }
 
                     this.routeControl = L.Routing.control({
@@ -283,8 +287,12 @@
                         ],
                         routeWhileDragging: false,
                         router: new L.Routing.OSRMv1({
-                            profile: 'driving'
+                            serviceUrl: 'http://garkaklis.com:5000/route/v1',
+                            profile: 'walking'
                         })
+                        // router: new L.Routing.OSRM4('http://raildar.fr/osrm-engine/viaroute', {
+                        //     serviceUrl: 'http://raildar.fr/osrm-engine/viaroute'
+                        // })
                     });
 
                     this.routeControl.addTo(this.map);

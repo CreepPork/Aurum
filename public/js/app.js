@@ -2029,14 +2029,21 @@ __webpack_require__(/*! leaflet-routing-machine */ "./node_modules/leaflet-routi
         if (this.isNavigating) {
           this.routeControl.getPlan().setWaypoints([]);
           this.isNavigating = false;
+          $('.leaflet-routing-container').each(function (index, value) {
+            value.remove();
+          });
         }
 
         this.routeControl = L.Routing.control({
           waypoints: [this.navigationFrom, this.navigationTo],
           routeWhileDragging: false,
           router: new L.Routing.OSRMv1({
-            profile: 'driving'
-          })
+            serviceUrl: 'http://garkaklis.com:5000/route/v1',
+            profile: 'walking'
+          }) // router: new L.Routing.OSRM4('http://raildar.fr/osrm-engine/viaroute', {
+          //     serviceUrl: 'http://raildar.fr/osrm-engine/viaroute'
+          // })
+
         });
         this.routeControl.addTo(this.map);
         this.isNavigating = true;
@@ -82172,6 +82179,9 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+// require('leaflet');
+// require('leaflet-routing-machine');
+// require('./lrm-osrm4');
 
 /***/ }),
 
